@@ -1,11 +1,16 @@
 import { Icon } from "@iconify/react";
-import { Fragment, useContext } from "react";
+import { Fragment, useContext, useState, useEffect } from "react";
 import AuthContext from "../store/auth-context";
 import Header from "../hero/Header";
 import Spinner from "../store/Spinner";
 
 const Movie = () => {
   const ctx = useContext(AuthContext);
+  const [date, setDate] = useState("");
+  useEffect(() => {
+    const dayt = new Date(ctx.movieDetails.date).toUTCString();
+    setDate(dayt);
+  }, [ctx]);
 
   return (
     <Fragment>
@@ -33,9 +38,7 @@ const Movie = () => {
               <span data-testid="movie-title" className="font-semibold">
                 {ctx.movieDetails.title}
               </span>
-              <span data-testid="movie-release-date">
-                {ctx.movieDetails.date}
-              </span>
+              <span data-testid="movie-release-date">{date}</span>
 
               <span>PG-13</span>
               <span>
