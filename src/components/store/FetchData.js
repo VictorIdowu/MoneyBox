@@ -8,6 +8,7 @@ export const timeOut = function (s) {
 
 const fetchData = async function (url) {
   try {
+    // if (!url) throw new Error("Invalid URL");
     const res = await fetch(`https://api.themoviedb.org/3${url}`, {
       method: "GET",
       headers: {
@@ -17,8 +18,15 @@ const fetchData = async function (url) {
       },
     });
 
-    if (!res.ok) throw new Error("Bad Network");
+    if (!res.ok) {
+      throw new Error("Something went wrong");
+    }
+
     const data = await res.json();
+
+    if (data.length < 1) {
+      throw new Error(`No data found for this request`);
+    }
     return data;
   } catch (err) {
     throw err;

@@ -28,7 +28,7 @@ const SearchResults = (props) => {
         </aside>
       )}
       {ctx.loading && !ctx.error && <Spinner color={"text-primary-100"} />}
-      {ctx.error && !ctx.isLoading && <Error color={"text-primary-100"} />}
+      {ctx.error && !ctx.loading && <Error color={"text-primary-100"} />}
     </section>
   );
 };

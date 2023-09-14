@@ -2,6 +2,7 @@ import { useContext, useState } from "react";
 import Rating from "../Rating";
 import { Icon } from "@iconify/react";
 import AuthContext from "../store/auth-context";
+import { Link } from "react-router-dom";
 
 const MovieCard = (props) => {
   const [fav, setFav] = useState(false);
@@ -48,14 +49,14 @@ const MovieCard = (props) => {
         >
           {props.item.release_date}
         </p>
-        <a
+        <Link
           className="text-primary-100 text-lg font-bold cursor-pointer hover:underline transition-all duration-1000"
           datatestid="movie-title"
           onClick={loadDetails}
-          href={`#movie/${props.item.id}`}
+          to={`movie/${props.item.id}`}
         >
           {props.item.title}
-        </a>
+        </Link>
         <Rating display={"justify-between"} />
 
         <p className="text-primary-200 text-px font-light">

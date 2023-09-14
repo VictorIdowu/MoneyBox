@@ -1,11 +1,7 @@
-import { useContext } from "react";
 import MovieCard from "./MovieCard";
 import { Icon } from "@iconify/react";
-import AuthContext from "../store/auth-context";
 
 const TopMovies = (props) => {
-  const ctx = useContext(AuthContext);
-
   return (
     <section className="px-3 sm:px-5 mt-10 sm:mt-16 md:mt-28">
       <aside className="flex justify-between items-center mb-3 md:mb-10 md:px-3">
@@ -18,7 +14,7 @@ const TopMovies = (props) => {
         </button>
       </aside>
       <aside className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-3 md:gap-5 lg:gap-x-10 lg:gap-y-24">
-        {ctx.topTenMovies.map((item, i) => (
+        {props.movies.map((item, i) => (
           <MovieCard item={item} key={i + 1} />
         ))}
       </aside>
