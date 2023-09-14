@@ -59,6 +59,7 @@ const Body = () => {
   const getMovieDetails = async function (id) {
     try {
       if (!id) return;
+      await setDisplaySearch(false);
       await setSeeDetails(true);
       await setIsLoading(true);
       await setError(false);

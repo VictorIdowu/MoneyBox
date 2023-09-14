@@ -30,7 +30,7 @@ The MovieBox web application is a user-friendly platform that allows movie enthu
 
 ## Demo
 
-You can access the live demo of the MovieFinder application <a href="https://www.movieBox.vercel.app" >here.</a>
+You can access the live demo of the MovieFinder application <a href="https://moneybox-swart.vercel.app" >here.</a>
 
 ## Getting Started
 
