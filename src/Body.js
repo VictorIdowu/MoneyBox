@@ -46,17 +46,16 @@ const Body = () => {
       };
 
       if (details.length < 1) {
-        setIsLoading(false);
-        throw new Error(`No data found for this request`);
+        await setErrorMsg(`No data found for this request`);
+        throw new Error();
       }
 
       await setMovieDetails(details);
       return setIsLoading(false);
-      // console.log(details);
     } catch (err) {
       // console.error(err.message);
-      await setError(true);
-      setErrorMsg(err.message);
+      await setIsLoading(false);
+      setError(true);
     }
   };
 
@@ -76,19 +75,17 @@ const Body = () => {
 
       const results = await data.results;
 
-      if (results.length < 1) {
-        setIsLoading(false);
-        throw new Error(`No results found for this query (${name})`);
+      if ((await results.length) < 1) {
+        await setErrorMsg(`No results found for this query (${name})`);
+        throw new Error();
       }
 
       await setSearchResults(await results);
       setIsLoading(false);
-
-      // console.log(results);
     } catch (err) {
-      // console.error(err);
-      await setError(true);
-      setErrorMsg(err.message);
+      setIsLoading(false);
+      // console.error(err.message);
+      setError(true);
     }
   };
 
@@ -98,6 +95,7 @@ const Body = () => {
   };
 
   const clearError = () => {
+    setDisplaySearch(false);
     setError(false);
   };
 
@@ -120,7 +118,7 @@ const Body = () => {
           <Route exact path="/" element={<Home />} />
           <Route path="/movie/:id" element={<Movie />} />
         </Routes>
-        {error && <Error color={"text-secondary-100"} />}
+        {error && <Error color={"secondary-100"} />}
         <Footer />
       </div>
       {displaySearch && <Modal />}
