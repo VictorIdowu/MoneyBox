@@ -3,16 +3,18 @@
 ## Table of Contents
 
 - [Introduction](#introduction)
-- Features
-- Demo
-- Getting Started
-  - Prerequisites
-  - Installation
-- Usage
-  - Viewing Top 10 Movies
-  - Searching for Movies
-  - Viewing Movie Details
-- API Usage
+- [Features](#features)
+- [Demo](#demo)
+- [Getting Started](#getting-started)
+  - [Prerequisites](#prerequisites)
+  - [Installation](#installation)
+- [Usage](#usage)
+  - [Viewing Top 10 Movies](#viewing-top-10-movies)
+  - [Searching for Movies](#searching-for-movies)
+  - [Viewing Movie Details](#viewing-movie-details)
+- [API Usage](#api-usage)
+- [Contributing](#contributing)
+- [License](#license)
 
 ## Introduction
 
