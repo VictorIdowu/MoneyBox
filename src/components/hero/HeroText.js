@@ -12,11 +12,11 @@ const HeroText = () => {
 
         <Rating />
 
-        <div className="text-white text-base font-medium leading-[18px]">
+        <p className="text-white text-base md:text-xl font-medium sm:pr-32 md:p-0 leading-[18px]">
           John Wick is on the run after killing a member of the international
           assassins' guild, and with a $14 million price tag on his head, he is
           the target of hit men and women everywhere.
-        </div>
+        </p>
         <button className="px-4 py-2 text-2xl bg-rose-700 rounded-md justify-start items-center gap-2 inline-flex">
           <Icon icon="heroicons-solid:play" className="text-primary-100" />
           <span className="text-white text-sm font-bold uppercase leading-normal">
