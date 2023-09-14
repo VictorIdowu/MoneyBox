@@ -18,7 +18,7 @@ const MovieCard = (props) => {
 
   return (
     <div
-      datatestid="movie-card"
+      data-testid="movie-card"
       className="w-full flex-col justify-between items-start  flex bg-primary-300 rounded-tl-2xl rounded-br-2xl overflow-hidden ease-out duration-500 shadow-md hover:shadow-primary-200 hover:shadow-2xl"
     >
       <div className="relative w-full h-fit">
@@ -26,7 +26,7 @@ const MovieCard = (props) => {
           <img
             className="object-contain"
             src={`https://image.tmdb.org/t/p/original${props.item.poster_path}`}
-            datatestid="movie-poster"
+            data-testid="movie-poster"
             alt={props.item.title}
           />
         </aside>
@@ -45,17 +45,16 @@ const MovieCard = (props) => {
       <aside className="w-full px-5 flex flex-col gap-5 py-2">
         <p
           className="text-gray-400 text-xs font-bold"
-          datatestid="movie-release-date"
+          data-testid="movie-release-date"
         >
           {props.item.release_date}
         </p>
         <Link
           className="text-primary-100 text-lg font-bold cursor-pointer hover:underline transition-all duration-1000"
-          datatestid="movie-title"
           onClick={loadDetails}
           to={`movie/${props.item.id}`}
         >
-          {props.item.title}
+          <p data-testid="movie-title">{props.item.title}</p>
         </Link>
         <Rating display={"justify-between"} />
 
