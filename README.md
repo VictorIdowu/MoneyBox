@@ -1,70 +1,87 @@
-# Getting Started with Create React App
+# MovieBox Web Application
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Table of Contents
 
-## Available Scripts
+- [Introduction](#introduction)
+- Features
+- Demo
+- Getting Started
+  - Prerequisites
+  - Installation
+- Usage
+  - Viewing Top 10 Movies
+  - Searching for Movies
+  - Viewing Movie Details
+- API Usage
 
-In the project directory, you can run:
+## Introduction
 
-### `npm start`
+The MovieBox web application is a user-friendly platform that allows movie enthusiasts to discover the top 10 movies, search for movies by name, and access detailed information about their favorite films. The application leverages the TMDB API to provide up-to-date movie data, including titles, ratings, release dates, and more.
+(HNGx Stage-2 Task)
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Features
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+- View the top 10 trending movies.
+- Search for movies by title.
+- Access comprehensive movie details, including title, release date, runtime, and overview.
+- A user-friendly and responsive interface for seamless navigation.
 
-### `npm test`
+## Demo
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+You can access the live demo of the MovieFinder application <a href="https://www.movieBox.vercel.app" >here.</a>
 
-### `npm run build`
+## Getting Started
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Prerequisites
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Before running the MovieBox web application locally, ensure you have the following prerequisites installed:
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- Node.js and npm: You can download them from <a href="https://nodejs.org/" >nodejs.org.</a>
 
-### `npm run eject`
+### Installation
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+Follow these steps to set up and run the application:
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+1. Clone this repository to your local machine:
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+   ```bash
+   git clone https://github.com/VictorIdowu/movieBox.git
+   ```
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+2. Navigate to the project directory:
 
-## Learn More
+   ```bash
+   cd moviefinder
+   ```
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+3. Install the project dependencies:
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+   ```bash
+   npm install
+   ```
 
-### Code Splitting
+4. Start the development server:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+   ```bash
+   npm start
+   ```
 
-### Analyzing the Bundle Size
+5. Open your web browser and access the application at `http://localhost:3000`.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+## Usage
 
-### Making a Progressive Web App
+### Viewing Top 10 Movies
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+On the home page, you'll find the top 10 trending movies displayed. Click on any movie card to view more details.
 
-### Advanced Configuration
+### Searching for Movies
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+To search for a specific movie, enter the movie's title in the search bar at the top of the page. The application will display matching results.
 
-### Deployment
+### Viewing Movie Details
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+Click on a movie card to access detailed information about the selected movie. This includes the movie's title, release date, runtime, and overview.
 
-### `npm run build` fails to minify
+## API Usage
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+This application consumes data from the TMDB (The Movie Database) API. To use the TMDB API, you'll need to obtain an API key by signing up at https://www.themoviedb.org/
