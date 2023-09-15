@@ -20,8 +20,8 @@ const Body = () => {
   // Load Top10 Movies from API bg-primary-300
   useEffect(() => {
     const dataFetcher = function () {
-      const id = window.location.pathname.slice(1);
-
+      const route = window.location.pathname.slice(1);
+      const id = route.replace("s", "");
       // console.log(id);
 
       getMovieDetails(`${id}`);
@@ -118,7 +118,7 @@ const Body = () => {
       <div className="relative">
         <Routes>
           <Route exact path="/" element={<Home />} />
-          <Route path="/movie/:id" element={<Movie />} />
+          <Route path="/movies/:id" element={<Movie />} />
         </Routes>
         {error && <Error color={"secondary-100"} />}
         <Footer />

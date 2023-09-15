@@ -56,7 +56,7 @@ const MovieCard = (props) => {
         <Link
           className="text-primary-100 text-lg font-bold cursor-pointer hover:underline transition-all duration-1000"
           onClick={loadDetails}
-          to={`movie/${props.item.id}`}
+          to={`movies/${props.item.id}`}
         >
           <p data-testid="movie-title">{props.item.title}</p>
         </Link>
