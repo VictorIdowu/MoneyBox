@@ -49,13 +49,9 @@ const Hero = () => {
   }, [counter]);
 
   return (
-    <section className="md:h-[90vh] relative" data-testid="movie-backdrop">
+    <section className="h-96 md:h-[90vh] relative" data-testid="movie-backdrop">
       <img
         src={`https://image.tmdb.org/t/p/original${heroMovie.img}`}
-        onError={(e) => {
-          e.target.src =
-            "https://images.hdqwalls.com/download/john-wick-3-parabellum-poster-qf-1440x900.jpg";
-        }}
         alt={heroMovie.title}
         className="h-96 md:h-[90vh] w-full absolute left-0 top-0 bottom-0 right-0 brightness-50 object-cover transition-all duration-500"
       />
