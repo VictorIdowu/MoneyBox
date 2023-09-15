@@ -20,7 +20,9 @@ const Body = () => {
   // Load Top10 Movies from API bg-primary-300
   useEffect(() => {
     const dataFetcher = function () {
-      const id = window.location.href.replace("http://localhost:3000/", "");
+      const id = window.location.pathname.slice(1);
+
+      console.log(id);
 
       getMovieDetails(`${id}`);
     };

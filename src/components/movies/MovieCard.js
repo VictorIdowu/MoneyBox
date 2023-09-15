@@ -7,12 +7,13 @@ import { Link } from "react-router-dom";
 const MovieCard = (props) => {
   const [fav, setFav] = useState(false);
   const ctx = useContext(AuthContext);
-
   const [date, setDate] = useState("");
+  const releaseDate = props.item.release_date;
+
   useEffect(() => {
-    const dayt = new Date(props.item.release_date).toUTCString();
+    const dayt = new Date(releaseDate).toUTCString();
     setDate(dayt);
-  }, [ctx]);
+  }, [releaseDate]);
 
   const favClass = `p-1 border-primary-200 border-2 bg-opacity-50 rounded-3xl backdrop-blur-none border-opacity-50 justify-start items-start text-3xl cursor-pointer active:scale-110 ${
     fav ? "text-secondary-100" : "text-primary-100"
@@ -32,6 +33,10 @@ const MovieCard = (props) => {
           <img
             className="object-contain"
             src={`https://image.tmdb.org/t/p/original${props.item.poster_path}`}
+            onError={(e) => {
+              e.target.src =
+                "https://lightwidget.com/wp-content/uploads/localhost-file-not-found.jpg";
+            }}
             data-testid="movie-poster"
             alt={props.item.title}
           />

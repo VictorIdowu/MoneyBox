@@ -7,10 +7,11 @@ import Spinner from "../store/Spinner";
 const Movie = () => {
   const ctx = useContext(AuthContext);
   const [date, setDate] = useState("");
+  const releaseDate = ctx.movieDetails.date;
   useEffect(() => {
-    const dayt = new Date(ctx.movieDetails.date).toUTCString();
+    const dayt = new Date(releaseDate).toUTCString();
     setDate(dayt);
-  }, [ctx]);
+  }, [releaseDate]);
 
   return (
     <Fragment>
@@ -20,7 +21,14 @@ const Movie = () => {
         <section className="p-2 md:p-10 grid grid-cols-1 xl:grid-rows-2 xl:grid-cols-3 gap-3 md:gap-10 pt-64 md:pt-40">
           <aside className="relative col-span-full">
             <img
-              src={`https://image.tmdb.org/t/p/original${ctx.movieDetails.img}`}
+              src={
+                `https://image.tmdb.org/t/p/original${ctx.movieDetails.img}` ||
+                "https://lightwidget.com/wp-content/uploads/localhost-file-not-found.jpg"
+              }
+              onError={(e) => {
+                e.target.src =
+                  "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR0IH3RJj3nkLOY79o1pkIcyuUpA9WH8dMMK_wzZ_mPutrFjQWb-8sp4Ik1JNafPg6uDMA&usqp=CAU";
+              }}
               alt={ctx.movieDetails.title}
               className="w-full rounded-2xl max-h-96"
               data-testid="movie-backdrop"
@@ -34,7 +42,7 @@ const Movie = () => {
             </h3>
           </aside>
           <aside className="col-span-2 flex flex-col gap-6 md:justify-between pb-6 md:pl-6">
-            <div className="text-px md:text-2xl font-medium flex flex-col md:flex-row gap-2 md:gap-5">
+            <div className="text-px md:text-xl font-medium flex flex-col md:flex-row gap-2 md:gap-3">
               <span data-testid="movie-title" className="font-semibold">
                 {ctx.movieDetails.title}
               </span>
