@@ -6,7 +6,6 @@ import Spinner from "../store/Spinner";
 
 const Movie = () => {
   const ctx = useContext(AuthContext);
-  
 
   return (
     <Fragment>
@@ -37,19 +36,15 @@ const Movie = () => {
             </h3>
           </aside>
           <aside className="col-span-2 flex flex-col gap-6 md:justify-between pb-6 md:pl-6">
-            <div className="text-px lg:text-lg font-medium flex flex-col md:flex-row gap-2">
+            <div className="text-px lg:text-xl font-medium flex flex-col md:flex-row gap-2 md:gap-5">
               <p data-testid="movie-title" className="font-bold">
                 {ctx.movieDetails.title}
               </p>
-              <p data-testid="movie-release-date">
-                {ctx.movieDetails.date}
-              </p>
+              <p data-testid="movie-release-date">{ctx.movieDetails.date}</p>
 
               <p>PG-13</p>
-              <span>
-                <p data-testid="movie-runtime">
-                  {ctx.movieDetails.runtime}
-                </p>
+              <span className="flex">
+                <p data-testid="movie-runtime">{ctx.movieDetails.runtime}</p>
                 mins
               </span>
 
