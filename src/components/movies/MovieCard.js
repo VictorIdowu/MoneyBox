@@ -1,4 +1,4 @@
-import { useContext, useState, useEffect } from "react";
+import { useContext, useState } from "react";
 import Rating from "../Rating";
 import { Icon } from "@iconify/react";
 import AuthContext from "../store/auth-context";
@@ -7,13 +7,6 @@ import { Link } from "react-router-dom";
 const MovieCard = (props) => {
   const [fav, setFav] = useState(false);
   const ctx = useContext(AuthContext);
-  const [date, setDate] = useState("");
-  const releaseDate = props.item.release_date;
-
-  useEffect(() => {
-    const dayt = new Date(releaseDate).toUTCString();
-    setDate(dayt);
-  }, [releaseDate]);
 
   const favClass = `p-1 border-primary-200 border-2 bg-opacity-50 rounded-3xl backdrop-blur-none border-opacity-50 justify-start items-start text-3xl cursor-pointer active:scale-110 ${
     fav ? "text-secondary-100" : "text-primary-100"
@@ -58,7 +51,7 @@ const MovieCard = (props) => {
           className="text-gray-400 text-xs font-bold"
           data-testid="movie-release-date"
         >
-          {date}
+          {props.item.release_date}
         </p>
         <Link
           className="text-primary-100 text-lg font-bold cursor-pointer hover:underline transition-all duration-1000"

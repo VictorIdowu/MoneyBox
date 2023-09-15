@@ -46,7 +46,7 @@ const Hero = () => {
       }
     };
     switchMovie();
-  }, [counter]);
+  }, [counter, movies]);
 
   return (
     <section className="h-96 md:h-[90vh] relative" data-testid="movie-backdrop">
