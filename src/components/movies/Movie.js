@@ -67,7 +67,7 @@ const Movie = () => {
                 ))}
               </aside>
             </div>
-            <p data-testid="movie-overview" className="text-px sm:text-xl">
+            <p data-testid="movie-overview" className="text-px sm:text-lg">
               {ctx.movieDetails.overview}
             </p>
             <div className="text-sm sm:text-lg flex flex-col gap-3">

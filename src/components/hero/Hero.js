@@ -1,29 +1,69 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import HeroText from "./HeroText";
 import fetchData from "../store/FetchData";
 
 const Hero = () => {
+  const [heroMovie, setHeromovie] = useState({});
+  const [movies, setMovies] = useState(0);
+  const [counter, setCounter] = useState(0);
+
+  const incrementCounter = () => {
+    setCounter((prev) => (prev < 4 ? prev + 1 : 0));
+  };
+
+  useEffect(() => {
+    const intervalId = setInterval(incrementCounter, 5000);
+
+    return () => {
+      clearInterval(intervalId);
+    };
+  }, []);
+
   useEffect(() => {
     const heroMovies = async function () {
       try {
         const data = await fetchData("/movie/popular");
-        console.log(data.results.splice(0, 5));
+        const movies = await data.results.splice(0, 5);
+        setMovies(movies);
       } catch (err) {
         console.error(err.message);
       }
     };
     heroMovies();
-  }, []);
-  // max-w-full h-fit
+  }, [counter]);
+
+  useEffect(() => {
+    const switchMovie = async function () {
+      try {
+        const movie = {
+          overview: await movies[counter].overview.slice(0, 200),
+          title: movies[counter].title,
+          img: movies[counter].poster_path,
+        };
+        setHeromovie(movie);
+      } catch (err) {
+        // console.error(err);
+      }
+    };
+    switchMovie();
+  }, [counter]);
 
   return (
-    <section className="md:h-screen relative" data-testid="movie-backdrop">
+    <section className="md:h-[90vh] relative" data-testid="movie-backdrop">
       <img
-        src="https://images.hdqwalls.com/download/john-wick-3-parabellum-poster-qf-1440x900.jpg"
-        alt=""
-        className="h-96 md:h-screen w-full absolute left-0 top-0 bottom-0 right-0 brightness-50 object-cover"
+        src={`https://image.tmdb.org/t/p/original${heroMovie.img}`}
+        onError={(e) => {
+          e.target.src =
+            "https://images.hdqwalls.com/download/john-wick-3-parabellum-poster-qf-1440x900.jpg";
+        }}
+        alt={heroMovie.title}
+        className="h-96 md:h-[90vh] w-full absolute left-0 top-0 bottom-0 right-0 brightness-50 object-cover transition-all duration-500"
       />
-      <HeroText />
+      <HeroText
+        counter={counter}
+        overview={heroMovie.overview}
+        title={heroMovie.title}
+      />
     </section>
   );
 };

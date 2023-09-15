@@ -15,7 +15,7 @@ body {
 }
 
 .pagination {
-  @apply text-xs sm:text-sm pt-3 lg:pt-0 lg:pl-3 leading-[14px] text-primary-100;
+  @apply text-xs sm:text-sm pt-3 lg:pt-0 lg:pl-3 leading-[14px] text-primary-100 ease-in-out duration-500 rounded-xl;
 }
 
 .footer-link {
