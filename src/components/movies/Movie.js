@@ -18,7 +18,7 @@ const Movie = () => {
       {/* {ctx.error && !ctx.loading && <Error color={"text-secondary-100"} />} */}
       {ctx.loading && !ctx.error && <Spinner color={"text-secondary-100"} />}
       {!ctx.loading && !ctx.error && (
-        <section className="p-2 md:p-10 grid grid-cols-1 xl:grid-rows-2 xl:grid-cols-3 gap-3 md:gap-10 pt-64 md:pt-40">
+        <section className="p-2 md:p-10 grid grid-cols-1 xl:grid-rows-2 xl:grid-cols-3 gap-3 md:gap-10 pt-20 md:pt-40">
           <aside className="relative col-span-full">
             <img
               src={
@@ -42,8 +42,8 @@ const Movie = () => {
             </h3>
           </aside>
           <aside className="col-span-2 flex flex-col gap-6 md:justify-between pb-6 md:pl-6">
-            <div className="text-px md:text-xl font-medium flex flex-col md:flex-row gap-2 md:gap-3">
-              <span data-testid="movie-title" className="font-semibold">
+            <div className="text-px lg:text-lg font-medium flex flex-col md:flex-row gap-2">
+              <span data-testid="movie-title" className="font-bold">
                 {ctx.movieDetails.title}
               </span>
               <span data-testid="movie-release-date">{date}</span>
@@ -67,7 +67,7 @@ const Movie = () => {
                 ))}
               </aside>
             </div>
-            <p data-testid="movie-overview" className="text-px sm:text-lg">
+            <p data-testid="movie-overview" className="text-base lg:text-lg">
               {ctx.movieDetails.overview}
             </p>
             <div className="text-sm sm:text-lg flex flex-col gap-3">
