@@ -3,7 +3,7 @@ import { Icon } from "@iconify/react";
 
 const TopMovies = (props) => {
   return (
-    <section className="px-3 sm:px-5 mt-10 sm:mt-16 md:mt-28">
+    <section className="px-3 sm:px-5  sm:mt-16 md:mt-28">
       <aside className="flex justify-between items-center mb-3 md:mb-10 md:px-3">
         <h2 className="text-xl sm:text-2xl md:text-4xl font-bold">
           Top Movies

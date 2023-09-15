@@ -22,7 +22,7 @@ const Body = () => {
     const dataFetcher = function () {
       const id = window.location.pathname.slice(1);
 
-      console.log(id);
+      // console.log(id);
 
       getMovieDetails(`${id}`);
     };

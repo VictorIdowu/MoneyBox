@@ -18,10 +18,10 @@ module.exports = {
       fontFamily: {
         body: ["DM Sans"],
       },
-      backgroundImage: {
-        "hero-pattern":
-          "url('https://images.hdqwalls.com/download/john-wick-3-parabellum-poster-qf-1440x900.jpg')",
-      },
+      // backgroundImage: {
+      //   "hero-pattern":
+      //     "url('https://images.hdqwalls.com/download/john-wick-3-parabellum-poster-qf-1440x900.jpg')",
+      // },
     },
   },
   plugins: [],
