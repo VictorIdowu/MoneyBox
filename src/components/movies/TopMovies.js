@@ -15,7 +15,16 @@ const TopMovies = (props) => {
       </aside>
       <aside className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-3 md:gap-5 lg:gap-x-10 lg:gap-y-24">
         {props.movies.map((item, i) => (
-          <MovieCard item={item} key={i + 1} />
+          <MovieCard
+            item={{
+              date: item.release_date,
+              title: item.title,
+              id: item.id,
+              img: item.poster_path,
+              voteAv: parseFloat(item.vote_average.toFixed(1)),
+            }}
+            key={i + 1}
+          />
         ))}
       </aside>
     </section>

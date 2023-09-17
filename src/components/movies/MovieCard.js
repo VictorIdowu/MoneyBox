@@ -3,6 +3,7 @@ import Rating from "../Rating";
 import { Icon } from "@iconify/react";
 import AuthContext from "../store/auth-context";
 import { Link } from "react-router-dom";
+import PopUp from "../UI/PopUp";
 
 const MovieCard = (props) => {
   const [fav, setFav] = useState(false);
@@ -16,16 +17,22 @@ const MovieCard = (props) => {
     await ctx.getMovieDetails(`movie/${props.item.id}`);
   };
 
+  const addFav = () => {
+    // console.log(props.item);
+    ctx.addFavorite(props.item);
+    setFav((prev) => !prev);
+  };
+
   return (
     <div
       data-testid="movie-card"
-      className="w-full flex-col justify-between items-start  flex bg-primary-300 rounded-tl-2xl rounded-br-2xl overflow-hidden ease-out duration-500 shadow-md hover:shadow-primary-200 hover:shadow-2xl"
+      className="w-full flex-col justify-between items-start  flex bg-primary-300 rounded-tl-2xl rounded-br-2xl overflow-hidden ease-out duration-500 shadow-md hover:shadow-primary-200 hover:shadow-2xl relative"
     >
       <div className="relative w-full h-fit">
         <aside className="w-full h-fit shadow-md text-center">
           <img
             className="object-contain"
-            src={`https://image.tmdb.org/t/p/original${props.item.poster_path}`}
+            src={`https://image.tmdb.org/t/p/original${props.item.img}`}
             onError={(e) => {
               e.target.src =
                 "https://lightwidget.com/wp-content/uploads/localhost-file-not-found.jpg";
@@ -39,11 +46,7 @@ const MovieCard = (props) => {
             Movie
           </p>
 
-          <Icon
-            icon="ph:heart-fill"
-            className={favClass}
-            onClick={() => setFav((prev) => !prev)}
-          />
+          <Icon icon="ph:heart-fill" className={favClass} onClick={addFav} />
         </div>
       </div>
       <aside className="w-full px-5 flex flex-col gap-5 py-2">
@@ -51,7 +54,7 @@ const MovieCard = (props) => {
           className="text-gray-400 text-xs font-bold"
           data-testid="movie-release-date"
         >
-          {props.item.release_date}
+          {props.item.date}
         </p>
         <Link
           className="text-primary-100 text-lg font-bold cursor-pointer hover:underline transition-all duration-1000"
@@ -60,11 +63,12 @@ const MovieCard = (props) => {
         >
           <p data-testid="movie-title">{props.item.title}</p>
         </Link>
-        <Rating display={"justify-between"} />
+        <Rating display={"justify-between"} item={props.item} />
 
         <p className="text-primary-200 text-px font-light">
           Action, Adventure, Horror
         </p>
+        {ctx.show && <PopUp />}
       </aside>
     </div>
   );

@@ -1,6 +1,6 @@
 const HeroPagination = (props) => {
   return (
-    <div className="col-start-2 place-self-center justify-self-end relative mb-3 md:m-0 pr-3 md:p-0 z-30 object-cover">
+    <div className="col-start-2 place-self-center justify-self-end relative mb-1 md:m-0 pr-3 md:p-0 z-50">
       <div className="flex lg:flex-col items-center gap-2.5">
         {[1, 2, 3, 4, 5].map((num, i) => {
           return (

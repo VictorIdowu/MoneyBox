@@ -16,13 +16,13 @@ const Body = () => {
   const [movieDetails, setMovieDetails] = useState([]);
   const [error, setError] = useState(false);
   const [errorMsg, setErrorMsg] = useState("");
+  const [showPopUp, setShowPopUp] = useState(false);
 
   // Load Top10 Movies from API bg-primary-300
   useEffect(() => {
     const dataFetcher = function () {
       const route = window.location.pathname.slice(1);
       const id = route.replace("s", "");
-      // console.log(id);
 
       getMovieDetails(`${id}`);
     };
@@ -37,7 +37,7 @@ const Body = () => {
       await setIsLoading(true);
       await setError(false);
       const data = await Promise.race([FetchData(`/${id}`), timeOut(15)]);
-
+      // console.log(data);
       const details = {
         id: data.imdb_id,
         date: data.release_date,
@@ -45,6 +45,9 @@ const Body = () => {
         runtime: data.runtime,
         img: data.backdrop_path,
         overview: data.overview,
+        genres: data.genres,
+        voteAv: parseFloat(data.vote_average.toFixed(1)),
+        voteC: parseFloat((data.vote_count / 1000).toFixed(1)),
       };
 
       if (details.length < 1) {
@@ -52,11 +55,11 @@ const Body = () => {
         throw new Error();
       }
 
-      await setMovieDetails(details);
+      setMovieDetails(details);
       return setIsLoading(false);
     } catch (err) {
       // console.error(err.message);
-      await setIsLoading(false);
+      setIsLoading(false);
       setError(true);
     }
   };
@@ -64,9 +67,9 @@ const Body = () => {
   //  Search for Movies by Name from API
   const searchMovies = async function (name) {
     try {
-      await setDisplaySearch(true);
-      await setIsLoading(true);
-      await setError(false);
+      setDisplaySearch(true);
+      setIsLoading(true);
+      setError(false);
 
       const data = await Promise.race([
         FetchData(
@@ -77,12 +80,14 @@ const Body = () => {
 
       const results = await data.results;
 
+      // return console.log(results);
+
       if ((await results.length) < 1) {
-        await setErrorMsg(`No results found for this query (${name})`);
+        setErrorMsg(`No results found for this query (${name})`);
         throw new Error();
       }
 
-      await setSearchResults(await results);
+      setSearchResults(await results);
       setIsLoading(false);
     } catch (err) {
       setIsLoading(false);
@@ -101,6 +106,18 @@ const Body = () => {
     setError(false);
   };
 
+  const addFavorite = async function (item) {
+    try {
+      // console.log(item);
+      setShowPopUp(true);
+      setTimeout(() => {
+        setShowPopUp(false);
+      }, 1500);
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
   return (
     <AuthContext.Provider
       value={{
@@ -109,10 +126,12 @@ const Body = () => {
         movieDetails: movieDetails,
         error: error,
         errorMsg: errorMsg,
+        show: showPopUp,
         search: searchMovies,
         getMovieDetails: getMovieDetails,
         hide: hideSearchResults,
         clear: clearError,
+        addFavorite: addFavorite,
       }}
     >
       <div className="relative">

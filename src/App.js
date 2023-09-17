@@ -5,7 +5,7 @@ import { BrowserRouter } from "react-router-dom";
 
 function App() {
   return (
-    <div className="font-body bg-primary-100">
+    <div className="font-body bg-primary-100 relative">
       <React.StrictMode>
         <BrowserRouter>
           <Body />

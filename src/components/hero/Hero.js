@@ -23,6 +23,7 @@ const Hero = () => {
     const heroMovies = async function () {
       try {
         const data = await fetchData("/movie/popular");
+        // console.log(data);
         const movies = await data.results.splice(0, 5);
         setMovies(movies);
       } catch (err) {
@@ -39,6 +40,7 @@ const Hero = () => {
           overview: await movies[counter].overview.slice(0, 200),
           title: movies[counter].title,
           img: movies[counter].poster_path,
+          voteAv: parseFloat(movies[counter].vote_average),
         };
         setHeromovie(movie);
       } catch (err) {
@@ -49,17 +51,13 @@ const Hero = () => {
   }, [counter, movies]);
 
   return (
-    <section className="h-96 md:h-[90vh] relative" data-testid="movie-backdrop">
+    <section className="h-[90vh] relative" data-testid="movie-backdrop">
       <img
         src={`https://image.tmdb.org/t/p/original${heroMovie.img}`}
         alt={heroMovie.title}
-        className="h-96 md:h-[90vh] w-full absolute left-0 top-0 bottom-0 right-0 brightness-50 object-cover transition-all duration-500"
+        className="h-[90vh] w-full absolute left-0 top-0 bottom-0 right-0 brightness-50 object-cover transition-all duration-500"
       />
-      <HeroText
-        counter={counter}
-        overview={heroMovie.overview}
-        title={heroMovie.title}
-      />
+      <HeroText counter={counter} item={heroMovie} />
     </section>
   );
 };

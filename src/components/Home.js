@@ -21,11 +21,11 @@ const Home = () => {
           timeOut(15),
         ]);
 
-        const topTen = await data.results.splice(0, 10);
-
+        const topTen = await data.results.slice(0, 10);
+        // console.log(topTen);
         if (topTen.length < 1) throw new Error("Empty");
 
-        await setTopTenMovies(topTen);
+        return setTopTenMovies(await topTen);
       } catch (err) {
         console.error(err.message);
       }

@@ -23,7 +23,16 @@ const SearchResults = (props) => {
       {!ctx.loading && !ctx.error && (
         <aside className="grid grid-col-1 gap-5 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 md:gap-x-10 md:gap-y-24">
           {ctx.searchResults.map((item, i) => (
-            <MovieCard item={item} key={i + 1} />
+            <MovieCard
+              item={{
+                date: item.release_date,
+                title: item.title,
+                id: item.id,
+                img: item.poster_path,
+                voteAv: parseFloat(item.vote_average.toFixed(1)),
+              }}
+              key={i + 1}
+            />
           ))}
         </aside>
       )}

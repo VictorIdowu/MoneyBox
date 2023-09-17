@@ -49,7 +49,10 @@ const Movie = () => {
               </span>
 
               <aside className="text-xs flex gap-2">
-                {["Action", "Drama"].map((item, i) => (
+                {[
+                  ctx.movieDetails.genres[0].name,
+                  ctx.movieDetails.genres[1].name,
+                ].map((item, i) => (
                   <p
                     className="py-1 px-2 rounded-2xl self-center border border-secondary-100"
                     key={i + 1}
@@ -97,7 +100,10 @@ const Movie = () => {
           <aside className="flex flex-col gap-3 sm:gap-6 md:items-end pr-6">
             <p className="flex text-xs md:text-lg gap-1 items-center text-primary-200">
               <Icon icon="twemoji:star" className="text-xl" />
-              8.5<span className="!text-primary-300 font-medium">| 350k</span>
+              {ctx.movieDetails.voteAv}
+              <span className="!text-primary-300 font-medium">
+                | {ctx.movieDetails.voteC}k
+              </span>
             </p>
             <div className="text-px sm:text-xl flex flex-col gap-2 w-full">
               <button className="bg-secondary-100 justify-center items-center text-primary-100 py-2  rounded-md  font-medium w-full flex gap-2">
