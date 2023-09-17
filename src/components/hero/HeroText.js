@@ -7,7 +7,7 @@ const HeroText = (props) => {
   //
   return (
     <div className="md:left-10 lg:left-24 lg:justify-between lg:bottom-0 right-10 top-1/2 absolute -translate-y-1/4 flex flex-col gap-3 lg:grid lg:grid-cols-2 lg:gap-48">
-      <aside className="px-3 md:p-0 col-start-1 flex-col justify-start items-start gap-3 flex pb-6 md:m-0 z-30 backdrop-blur-[1px]">
+      <aside className="px-3 md:p-0 col-start-1 flex-col justify-start items-start gap-6 flex pb-6 md:m-0 z-30 backdrop-blur-[1px]">
         <h2
           className="text-primary-100 text-lg sm:text-2xl md:text-5xl font-bold md:leading-[56px]"
           data-testid="movie-title"

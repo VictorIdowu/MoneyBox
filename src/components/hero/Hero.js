@@ -24,7 +24,9 @@ const Hero = () => {
       try {
         const data = await fetchData("/movie/popular");
         // console.log(data);
-        const movies = await data.results.splice(0, 5);
+        // console.log(data);
+        const movies = await data.results.slice(0, 5);
+        // console.log(movies);
         setMovies(movies);
       } catch (err) {
         console.error(err.message);
